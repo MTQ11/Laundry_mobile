@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Header from './component/Header'
 
 const Home = () => {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  )
+    return (
+        <View>
+           <Header></Header>
+        </View>
+    )
 }
 
 export default Home
