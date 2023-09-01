@@ -6,7 +6,7 @@ const Services = () => {
     {
       id: 0,
       image: "https://cdn-icons-png.flaticon.com/128/3003/3003984.png",
-      name: "washing"
+      name: "Washing"
     },
     {
       id: 1,

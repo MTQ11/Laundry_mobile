@@ -1,7 +1,27 @@
 import { StyleSheet, Text, View, ScrollView, Pressable, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCart } from '../../../slice/CartSlice'
+import { getProduct, incrementQty, decrementQty } from '../../../slice/ProductSlice'
+import { incrementQuantity, decrementQuantity } from '../../../slice/CartSlice'
 
 const Items = () => {
+    const cart = useSelector((state) => state.cart.cart)
+    const dispatch = useDispatch()
+    const addItemToCart = (item) => {
+        dispatch(addCart(item)) //cart
+        dispatch(incrementQty(item)) //product
+    }
+    const product = useSelector((state) => state.product.product)
+    const fetchProduct = () => {
+        items.map((item) =>
+            dispatch(getProduct(item))
+        )
+    }
+    useEffect(() => {
+        if (product.lenght > 0) return;
+        fetchProduct()
+    }, [])
     const items = [
         {
             id: 0,
@@ -14,7 +34,7 @@ const Items = () => {
             id: 1,
             image: 'https://cdn-icons-png.flaticon.com/128/892/892458.png',
             name: 'T-shirt',
-            quantity: 2,
+            quantity: 0,
             price: 10,
         },
         {
@@ -42,50 +62,43 @@ const Items = () => {
             id: 5,
             image: 'https://cdn-icons-png.flaticon.com/128/3345/3345397.png',
             name: 'shorts',
-            quantity: 4,
+            quantity: 0,
             price: 10,
         },
         {
             id: 6,
             image: 'https://cdn-icons-png.flaticon.com/128/293/293241.png',
             name: 'Sleeveless',
-            quantity: 4,
+            quantity: 0,
             price: 10,
         },
     ]
     return (
-        <View style={{margin: 5}}>
+        <View style={{ margin: 5 }}>
             <Text>Items</Text>
             <ScrollView style={{ height: 320 }} showsVerticalScrollIndicator={false}>
-                {items.map((item, i) =>
+                {product.map((item, i) =>
                     <Pressable key={i} style={{ flexDirection: "row", justifyContent: "space-between", margin: 5, padding: 10, borderRadius: 10, backgroundColor: "white" }}>
                         <Image style={{ width: 100, height: 100 }} source={{ uri: item.image }}></Image>
                         <View>
                             <Text>{item.name}</Text>
                             <Text>{item.price}$</Text>
                         </View>
-                        <View style={{width: 100}}>
+                        <View style={{ width: 100 }}>
                             {
-                                (item.quantity == 0)
-                                    ? <Text
-                                        style={{
-                                            borderColor: "gray",
-                                            borderRadius: 4,
-                                            borderWidth: 0.8,
-                                            marginVertical: 10,
-                                            color: "#088F8F",
-                                            textAlign: "center",
-                                            padding: 5,
-                                            fontSize: 17,
-                                            fontWeight: "bold",
-                                        }}>Add</Text>
-                                    : <Pressable
+                                (cart.some((c) => c.id === item.id))
+                                    ?
+                                    <Pressable
                                         style={{
                                             flexDirection: "row",
                                             paddingHorizontal: 10,
                                             paddingVertical: 5,
                                         }}>
                                         <Pressable
+                                            onPress={() => {
+                                                dispatch(decrementQty(item)) //product
+                                                dispatch(decrementQuantity(item)) //cart
+                                            }}
                                             style={{
                                                 width: 26,
                                                 height: 26,
@@ -117,6 +130,10 @@ const Items = () => {
                                         </Pressable>
 
                                         <Pressable
+                                            onPress={() => {
+                                                dispatch(incrementQty(item)) //product
+                                                dispatch(incrementQuantity(item)) //cart
+                                            }}
                                             style={{
                                                 width: 26,
                                                 height: 26,
@@ -135,6 +152,21 @@ const Items = () => {
                                                     textAlign: "center",
                                                 }}>+</Text>
                                         </Pressable>
+                                    </Pressable>
+                                    :
+                                    <Pressable onPress={() => addItemToCart(item)}>
+                                        <Text
+                                            style={{
+                                                borderColor: "gray",
+                                                borderRadius: 4,
+                                                borderWidth: 0.8,
+                                                marginVertical: 10,
+                                                color: "#088F8F",
+                                                textAlign: "center",
+                                                padding: 5,
+                                                fontSize: 17,
+                                                fontWeight: "bold",
+                                            }}>Add</Text>
                                     </Pressable>
                             }
                         </View>
