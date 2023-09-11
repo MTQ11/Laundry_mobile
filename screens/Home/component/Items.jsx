@@ -19,64 +19,64 @@ const Items = () => {
         )
     }
     useEffect(() => {
-        if (product.lenght > 0) return;
+        if (product.length > 0) return;
         fetchProduct()
-    }, [])
+    }, [product.length])
     const items = [
         {
             id: 0,
             image: 'https://cdn-icons-png.flaticon.com/128/4643/4643574.png',
             name: 'shirt',
             quantity: 0,
-            price: 10,
+            price: 1,
         },
         {
             id: 1,
             image: 'https://cdn-icons-png.flaticon.com/128/892/892458.png',
             name: 'T-shirt',
             quantity: 0,
-            price: 10,
+            price: 0.5,
         },
         {
             id: 2,
             image: 'https://cdn-icons-png.flaticon.com/128/9609/9609161.png',
             name: 'dresses',
             quantity: 0,
-            price: 10,
+            price: 1,
         },
         {
             id: 3,
             image: 'https://cdn-icons-png.flaticon.com/128/599/599388.png',
             name: 'jeans',
             quantity: 0,
-            price: 10,
+            price: 1.2,
         },
         {
             id: 4,
             image: 'https://cdn-icons-png.flaticon.com/128/9431/9431166.png',
             name: 'Sweater',
             quantity: 0,
-            price: 10,
+            price: 1.5,
         },
         {
             id: 5,
             image: 'https://cdn-icons-png.flaticon.com/128/3345/3345397.png',
             name: 'shorts',
             quantity: 0,
-            price: 10,
+            price: 0.8,
         },
         {
             id: 6,
             image: 'https://cdn-icons-png.flaticon.com/128/293/293241.png',
             name: 'Sleeveless',
             quantity: 0,
-            price: 10,
+            price: 0.2,
         },
     ]
     return (
-        <View style={{ margin: 5 }}>
+        <View style={styles.Item}>
             <Text>Items</Text>
-            <ScrollView style={{ height: 320 }} showsVerticalScrollIndicator={false}>
+            <View>
                 {product.map((item, i) =>
                     <Pressable key={i} style={{ flexDirection: "row", justifyContent: "space-between", margin: 5, padding: 10, borderRadius: 10, backgroundColor: "white" }}>
                         <Image style={{ width: 100, height: 100 }} source={{ uri: item.image }}></Image>
@@ -172,11 +172,15 @@ const Items = () => {
                         </View>
                     </Pressable>
                 )}
-            </ScrollView>
+            </View>
         </View>
     )
 }
 
 export default Items
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    Item: {
+        margin: 5
+    },
+})

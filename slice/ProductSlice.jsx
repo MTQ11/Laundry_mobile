@@ -17,8 +17,11 @@ export const ProductSlice = createSlice({
             const itemPresent = state.product.find((item) => item.id == action.payload.id)
             itemPresent.quantity--;
         },
+        resetProduct: (state) => {
+            state.product = []
+        }
     }
 })
 
-export const { getProduct, incrementQty, decrementQty } = ProductSlice.actions
+export const { getProduct, incrementQty, decrementQty, resetProduct } = ProductSlice.actions
 export default ProductSlice.reducer 

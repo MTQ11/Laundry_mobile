@@ -9,7 +9,7 @@ const ImageSlide = () => {
     "https://tse2.mm.bing.net/th?id=OIP.Ri1K6sIyuKuvJNJI9-xXFgHaE8&pid=Api&P=0&h=180"
   ]
   return (
-    <View style={{marginVertical: 10}}>
+    <View style={styles.ImageSlide}>
       <SliderBox
         // autoplay
         // circleLoop
@@ -22,4 +22,8 @@ const ImageSlide = () => {
 
 export default ImageSlide
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  ImageSlide: {
+    marginVertical: 10
+  }
+})

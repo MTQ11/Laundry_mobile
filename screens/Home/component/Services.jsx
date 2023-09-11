@@ -30,7 +30,7 @@ const Services = () => {
     }
   ]
   return (
-    <View style={{margin: 5}}>
+    <View style={styles.Service}>
       <Text>Service Available</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {services.map((item, i) =>
@@ -46,4 +46,8 @@ const Services = () => {
 
 export default Services
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  Service:{
+    margin: 5
+  }
+})

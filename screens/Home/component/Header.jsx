@@ -37,7 +37,7 @@ const Header = () => {
     }, [])
     return (
         <View>
-            <View style={{ flexDirection: "row", alignItems: "center", padding: 10 }}>
+            <View style={styles.Header}>
                 <Entypo name="location-pin" size={30} color="red" />
                 <View>
                     <Text>Laundry Shop</Text>
@@ -46,7 +46,7 @@ const Header = () => {
                 <Image style={{ width: 50, height: 50, borderRadius: 50, marginLeft: "auto", marginRight: 7 }} source={{ uri: "https://yt3.ggpht.com/yti/AOXPAcXCZI-YFRcjBulRs-YgyY1zJ20Ud0uF1RtA9swf=s88-c-k-c0x00ffffff-no-rj" }}></Image>
             </View>
 
-            <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", height: 50, paddingHorizontal: 10, marginHorizontal: 10, borderWidth: 1, borderColor: "grey", borderRadius: 10, backgroundColor: "white" }}>
+            <View style={styles.Search}>
                 <TextInput placeholder='Search item'></TextInput>
                 <FontAwesome name="search" size={24} color="black" />
             </View>
@@ -56,4 +56,22 @@ const Header = () => {
 
 export default Header
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    Header:{
+        flexDirection: "row", 
+        alignItems: "center", 
+        padding: 10 
+    },
+    Search:{
+        flexDirection: "row", 
+        justifyContent: "space-between", 
+        alignItems: "center", 
+        height: 50, 
+        paddingHorizontal: 10, 
+        marginHorizontal: 10, 
+        borderWidth: 1, 
+        borderColor: "grey", 
+        borderRadius: 10, 
+        backgroundColor: "white"
+    }
+})
