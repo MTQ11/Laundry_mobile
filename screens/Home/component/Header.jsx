@@ -2,11 +2,18 @@ import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Entypo, FontAwesome } from '@expo/vector-icons';
 import * as Location from 'expo-location'
+import { useDispatch } from 'react-redux';
+import { findProduct } from '../../../slice/ProductSlice';
+import { getTypeService } from '../../../slice/TypeServiceSlice';
 
 const Header = () => {
     const [location, setLocation] = useState("Watting...");
     const [errorMsg, setErrorMsg] = useState(null);
-
+    const [keySearch, setKeySearch] = useState(null)
+    const dispacth = useDispatch()
+    useEffect(() => {
+        getPermission()
+    }, [])
 
     // lấy địa chỉ
     const getPermission = async () => {
@@ -30,11 +37,11 @@ const Header = () => {
         }
     }
 
-
-
-    useEffect(() => {
-        getPermission()
-    }, [])
+    const searchButton = ()=>{
+        dispacth(findProduct(keySearch))
+        dispacth(getTypeService("search"))
+    } 
+    
     return (
         <View>
             <View style={styles.Header}>
@@ -47,8 +54,8 @@ const Header = () => {
             </View>
 
             <View style={styles.Search}>
-                <TextInput placeholder='Search item'></TextInput>
-                <FontAwesome name="search" size={24} color="black" />
+                <TextInput placeholder='Search item' onChangeText={(value)=>setKeySearch(value)} ></TextInput>
+                <FontAwesome onPress={()=>searchButton()} name="search" size={24} color="black" />
             </View>
         </View>
     )

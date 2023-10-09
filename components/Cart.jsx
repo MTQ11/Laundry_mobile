@@ -29,7 +29,7 @@ const Cart = (props) => {
         cart.map((item) => {
             sum = sum + item.price * item.quantity;
         });
-        return sum.toFixed(1);
+        return sum.toFixed(0);
     }
     return (
         <>
@@ -47,13 +47,13 @@ const Cart = (props) => {
                         <View style={{ height: 100, flexDirection: "row", justifyContent: "space-between", padding: 20 }}>
                             <View style={{ width: 120, flexDirection: "row", justifyContent: "space-between" }}>
                                 <Feather name="shopping-cart" size={35} color="black" />
-                                <View>
+                                <View style={{ width:150, marginHorizontal: 5 }}>
                                     <Text>{totalItem} items</Text>
-                                    <Text>Total: {totalPay}$</Text>
+                                    <Text>Total: {totalPay} VNĐ</Text>
                                 </View>
                             </View>
                             <Pressable 
-                                onPress={navigator.navigate(props.navigator)}
+                                onPress={()=>navigator.navigate(props.navigator)}
                                 style={{
                                     backgroundColor: "white "
                                 }}
