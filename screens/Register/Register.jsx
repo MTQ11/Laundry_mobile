@@ -32,21 +32,23 @@ const Register = () => {
         { text: "OK", onPress: () => console.log("OK Pressed") },
       ]);
     }
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      console.log("user credential", userCredential);
-      const user = userCredential._tokenResponse.email;
-      const myUserUid = auth.currentUser.uid;
+    createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => {
+        console.log("user credential", userCredential);
+        const user = userCredential._tokenResponse.email;
+        const myUserUid = auth.currentUser.uid;
 
-      setDoc(doc(db,"users", `${myUserUid}` ),{
-        email:user,
-        phone:phone,
-      })
-    })
-    // navigation.goBack();
+        setDoc(doc(db, "users", `${myUserUid}`), {
+          email: user,
+          phone: phone,
+        });
+       
+      }
+      
+    );
+       
 
-    // Xóa thông tin đã nhập từ trường email, password, và phone
-    setEmail("");
-    setPassword("");
+    navigation.replace("Login");
   };
   return (
     <SafeAreaView

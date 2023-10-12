@@ -20,18 +20,18 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    setLoading(true);
-    const unsubcribe = auth.onAuthStateChanged((authUser) => {
-      if (!authUser) {
-        setLoading(false);
-      }
-      if (authUser) {
-       navigation.navigate("Home");
-      }
-    });
-    return unsubcribe;
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const unsubcribe = auth.onAuthStateChanged((authUser) => {
+  //     if (!authUser) {
+  //       setLoading(false);
+  //     }
+  //     if (authUser) {
+  //      navigation.navigate("Home");
+  //     }
+  //   });
+  //   return unsubcribe;
+  // }, []);
 
   const login = () => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -39,6 +39,7 @@ const Login = () => {
       const user = userCredential.user;
       console.log("user details", user);
     });
+    navigation.navigate("Home");
   };
 
   return (
