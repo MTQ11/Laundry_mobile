@@ -115,7 +115,7 @@ const Items = () => {
     // ]
     return (
         <View style={styles.Item}>
-            <Text>Items</Text>
+            <Text style={{fontWeight:500, fontSize: 20, marginLeft: 10 }}>Items</Text>
             <View>
                 {
                     typeService == "search"
