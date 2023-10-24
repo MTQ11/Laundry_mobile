@@ -38,7 +38,6 @@ const Cart = (props) => {
           style={{
             margin: 10,
             padding: 5,
-            backgroundColor: "#019417",
             borderRadius: 10,
           }}
         >
@@ -52,32 +51,37 @@ const Cart = (props) => {
           </Pressable>
           <View
             style={{
-              height: 100,
+              backgroundColor: "#088F8F",
+              marginTop: "auto",
+              padding: 10,
+              marginBottom: 40,
+              margin: 15,
+              borderRadius: 7,
               flexDirection: "row",
+              alignItems: "center",
               justifyContent: "space-between",
-              padding: 20,
             }}
           >
-            <View
-              style={{
-                width: 120,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <Feather name="shopping-cart" size={35} color="black" />
-              <View style={{ width: 150, marginHorizontal: 5 }}>
-                <Text>{totalItem} items</Text>
-                <Text>Total: {totalPay} VNĐ</Text>
-              </View>
+            <View>
+              <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>
+                {totalItem} items | $ {totalPay}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: "400",
+                  color: "white",
+                  marginVertical: 6,
+                }}
+              >
+                extra charges might apply
+              </Text>
             </View>
-            <Pressable
-              onPress={() => navigator.navigate(props.navigator)}
-              style={{
-                backgroundColor: "white ",
-              }}
-            >
-              <Text>{props.button}</Text>
+
+            <Pressable onPress={() => navigator.navigate(props.navigator)}>
+              <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>
+                {props.button}
+              </Text>
             </Pressable>
           </View>
         </View>

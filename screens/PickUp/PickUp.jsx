@@ -12,6 +12,7 @@ import HorizontalDatepicker from "@awrminkhodaei/react-native-horizontal-datepic
 import { ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 const PickUp = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -100,6 +101,15 @@ const PickUp = () => {
   return (
     <>
     <SafeAreaView>
+    <View>
+           <Ionicons
+            style={{flexDirection: "row", padding: 10, marginTop: 30 }}
+              onPress={() => navigation.goBack()}
+              name="arrow-back"
+              size={24}
+              color="black"
+            />
+        </View>
       <Text
         style={{
           fontSize: 16,
@@ -115,7 +125,7 @@ const PickUp = () => {
           padding: 40,
           borderColor: "gray",
           borderWidth: 0.7,
-          paddingVertical: 80,
+          paddingVertical: 50,
           borderRadius: 9,
           margin: 10,
         }}
