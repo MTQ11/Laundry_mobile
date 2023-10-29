@@ -26,7 +26,7 @@ const CartScreen = () => {
   const route = useRoute();
   const placeOrder = async () => {
     navigation.navigate("Order");
-    dispatch(resetCart());
+    //dispatch(resetCart());
     await setDoc(
       doc(db, "users", `${userUid}`),
       {

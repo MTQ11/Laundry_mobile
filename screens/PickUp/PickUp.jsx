@@ -47,15 +47,7 @@ const PickUp = () => {
 
   const times = [
     {
-      id: "0",
-      time: "11:00 PM",
-    },
-    {
       id: "1",
-      time: "12:00 PM",
-    },
-    {
-      id: "2",
       time: "1:00 PM",
     },
     {
@@ -63,12 +55,20 @@ const PickUp = () => {
       time: "2:00 PM",
     },
     {
-      id: "4",
+      id: "3",
       time: "3:00 PM",
     },
     {
-      id: "5",
+      id: "4",
       time: "4:00 PM",
+    },
+    {
+      id: "5",
+      time: "5:00 PM",
+    },
+    {
+      id: "6",
+      time: "6:00 PM",
     },
   ];
   const navigation = useNavigation();
@@ -169,29 +169,33 @@ const PickUp = () => {
         Select Time
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {times.map((item, index) => (
-            <Pressable
-              key={index}
-              onPress={() => setSelectedTime(item.time)}
+          {times.map((item, i) => (
+            <Pressable            
               style={
                 selectedTime.includes(item.time)
                   ? {
                       margin: 10,
                       borderRadius: 7,
                       padding: 15,
-                      borderColor: "red",
-                      borderWidth: 0.7,
+                      backgroundColor: "#222831",
+                      borderWidth: 1.5,
                     }
                   : {
                       margin: 10,
                       borderRadius: 7,
                       padding: 15,
                       borderColor: "gray",
-                      borderWidth: 0.7,
+                      borderWidth: 1.5,
                     }
               }
+              key={i}
+              onPress={() => setSelectedTime(item.time)}
             >
-              <Text>{item.time}</Text>
+              <Text style={
+                selectedTime.includes(item.time) 
+                ? {color: "white"} :
+                {color: "black"}
+              }>{item.time}</Text>
             </Pressable>
           ))}
         </ScrollView>
@@ -214,7 +218,7 @@ const PickUp = () => {
                       margin: 10,
                       borderRadius: 7,
                       padding: 15,
-                      borderColor: "red",
+                      backgroundColor: "#222831",
                       borderWidth: 0.7,
                     }
                   : {
@@ -228,7 +232,11 @@ const PickUp = () => {
               onPress={() => setDelivery(item.name)}
               key={i}
             >
-              <Text>{item.name}</Text>
+              <Text style={
+                delivery.includes(item.name) 
+                ? {color: "white"} :
+                {color: "black"}
+              }>{item.name}</Text>
             </Pressable>
           ))}
         </ScrollView>
